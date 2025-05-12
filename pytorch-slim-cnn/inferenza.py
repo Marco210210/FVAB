@@ -19,7 +19,7 @@ transform = transforms.Compose([
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),  
 ])
 
-img_path = r'Realistic_Vision_V5.0_noVAE-512\1_Realistic_Vision_V5.0_noVAE_1.png'  # Sostituisci con il percorso dell'immagine
+img_path = r'Realistic_Vision_V5.0_noVAE-512\1_Realistic_Vision_V5.0_noVAE_1.png'
 image = Image.open(img_path).convert('RGB')
 
 image = transform(image).unsqueeze(0)  
