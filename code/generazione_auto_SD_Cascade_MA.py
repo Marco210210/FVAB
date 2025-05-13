@@ -4,7 +4,7 @@ import os
 from tqdm import tqdm
 
 # Config generali
-prompt_file = "prompts.txt"
+prompt_file = "prompts_test1.txt"
 num_images = 20
 prior_steps = 20
 decoder_steps = 10

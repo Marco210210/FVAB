@@ -1,6 +1,16 @@
 #comando da eseguire
 # python train.py --batch_size 16 --num_workers 0
 
+#Quando sali a 10k immagini:
+#Batch 24 potrebbe diventare troppo pesante → occhio alla RAM/GPU.
+#Batch 16 è la scelta consigliata, perché:
+#Stabile su 420 immagini.
+#Converge bene.
+#Ha margine per scalare.
+#💡 Tattica consigliata:
+#Inizia con batch_size=16, monitora GPU/tempo.
+#Se vedi che la GPU è molto scarica, prova anche batch_size=24 o 32 ma con attenzione alla memoria.
+
 from slimnet import SlimNet
 from datasets import CelebADataset
 import torch

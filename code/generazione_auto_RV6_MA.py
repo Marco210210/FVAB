@@ -26,7 +26,7 @@ negative_prompt = (
 )
 
 # Carica i prompt
-with open("prompts.txt", "r", encoding="utf-8") as f:
+with open("prompts_test1.txt", "r", encoding="utf-8") as f:
     prompts = [line.strip() for line in f if line.strip()]
 
 # Output
