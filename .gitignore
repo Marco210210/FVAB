@@ -3,5 +3,3 @@ env/
 magface/models/magface_epoch_00025.pth
 scelta_modello/outputs/Realistic_Vision_V1.3
 scelta_modello/outputs/Realistic_Vision_V1.4
-scelta_modello/outputs/Realistic_Vision_V2.0
-scelta_modello/outputs/Realistic_Vision_V3.0_VAE
