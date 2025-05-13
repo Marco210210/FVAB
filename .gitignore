@@ -1,3 +1,4 @@
 scelta_modello/models/
 env/
 magface/models/magface_epoch_00025.pth
+magface/models/__pycache__
