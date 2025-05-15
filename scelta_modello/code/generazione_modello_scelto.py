@@ -18,7 +18,7 @@ VAE_ID = "stabilityai/sd-vae-ft-mse-original"
 # Parametri generali
 width = 512
 height = 512
-num_images = 1
+num_images = 9
 num_steps = 25
 guidance = 5.5
 
@@ -38,8 +38,9 @@ for model_id in MODELS:
     print(f"\n📦 Avvio generazione per: {model_name}")
 
     # Percorso della cartella output per questo modello
-    model_output_dir = os.path.join("outputs_finale", model_name)
+    model_output_dir = os.path.join(r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\outputs_finale",model_name)
     os.makedirs(model_output_dir, exist_ok=True)
+
 
     # Log file
     log_file = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\tempimg.list"
