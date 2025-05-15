@@ -7,7 +7,7 @@ import numpy as np
 
 # Modello
 MODEL_ID = "SG161222/Realistic_Vision_V6.0_B1_noVAE"
-VAE_PATH = "models/vae-ft-mse/vae.pt"
+VAE_PATH = "models/vae.pt"
 
 # Impostazioni
 width = 896

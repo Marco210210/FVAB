@@ -5,22 +5,12 @@ from tqdm import tqdm
 
 # Modelli da usare
 MODELS = [
-    "SG161222/Realistic_Vision_V1.3",
-    "SG161222/Realistic_Vision_V1.4",
-    "SG161222/Realistic_Vision_V2.0",
-    "SG161222/Realistic_Vision_V3.0_VAE",
-    "SG161222/Realistic_Vision_V4.0_noVAE",
     "SG161222/Realistic_Vision_V5.0_noVAE",
-    "SG161222/Realistic_Vision_V5.1_noVAE",
-    "SG161222/Realistic_Vision_V6.0_B1_noVAE"
 ]
 
 # Modelli che richiedono VAE esterno
 MODELS_NEED_VAE = {
-    "SG161222/Realistic_Vision_V2.0",
     "SG161222/Realistic_Vision_V5.0_noVAE",
-    "SG161222/Realistic_Vision_V5.1_noVAE",
-    "SG161222/Realistic_Vision_V6.0_B1_noVAE"
 }
 
 VAE_ID = "stabilityai/sd-vae-ft-mse-original"
@@ -28,7 +18,7 @@ VAE_ID = "stabilityai/sd-vae-ft-mse-original"
 # Parametri generali
 width = 512
 height = 512
-num_images = 20
+num_images = 9
 num_steps = 25
 guidance = 5.5
 
@@ -39,7 +29,7 @@ negative_prompt = (
 )
 
 # Carica i prompt
-with open("prompts_test1.txt", "r", encoding="utf-8") as f:
+with open("prompt_test2.txt", "r", encoding="utf-8") as f:
     prompts = [line.strip() for line in f if line.strip()]
 
 # Loop sui modelli
@@ -48,7 +38,7 @@ for model_id in MODELS:
     print(f"\n📦 Avvio generazione per: {model_name}")
 
     # Percorso della cartella output per questo modello
-    model_output_dir = os.path.join("outputs", model_name)
+    model_output_dir = os.path.join("outputs_finale", model_name)
     os.makedirs(model_output_dir, exist_ok=True)
 
     # Log file
@@ -61,7 +51,7 @@ for model_id in MODELS:
     # Carica pipeline con o senza VAE
     if model_id in MODELS_NEED_VAE:
         print("🔧 Caricamento VAE esterno...")
-        vae = AutoencoderKL.from_single_file("models/vae-ft-mse/vae.pt", torch_dtype=torch.float16)
+        vae = AutoencoderKL.from_single_file("models/vae.pt", torch_dtype=torch.float16)
         pipe = StableDiffusionPipeline.from_pretrained(
             model_id,
             vae=vae,
