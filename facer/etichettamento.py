@@ -9,7 +9,7 @@ sys.path.append("..")
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Cartella delle immagini
-img_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\toy_imgs"
+img_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img"
 
 # Modello di rilevamento facciale
 face_detector = facer.face_detector("retinaface/mobilenet", device=device)

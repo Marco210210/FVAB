@@ -1,4 +1,4 @@
-#python gen_feat.py --inf_list toy_imgs/img.list --feat_list toy_imgs/feat.list --resume ../models/magface_epoch_00025.pth
+#python gen_feat.py --inf_list img/img.list --feat_list img/feat.list --resume ../models/magface_epoch_00025.pth
 
 #!/usr/bin/env python
 import sys
