@@ -1,15 +1,14 @@
 #comando da eseguire
-# python train.py --batch_size 16 --num_workers 0
+# python train_new.py --batch_size 16 --num_workers 0
 
-#Quando sali a 10k immagini:
+#Quando saliremo a più immagini:
 #Batch 24 potrebbe diventare troppo pesante → occhio alla RAM/GPU.
-#Batch 16 è la scelta consigliata, perché:
-#Stabile su 420 immagini.
+#Batch 16 è la scelta consigliata, perché: Stabile su 420 immagini.
 #Converge bene.
 #Ha margine per scalare.
 #💡 Tattica consigliata:
 #Inizia con batch_size=16, monitora GPU/tempo.
-#Se vedi che la GPU è molto scarica, prova anche batch_size=24 o 32 ma con attenzione alla memoria.
+#Se si vede che la GPU è molto scarica, prova anche batch_size=24 o 32 ma con attenzione alla memoria.
 
 from slimnet import SlimNet
 from datasets import CelebADataset
@@ -31,8 +30,8 @@ if __name__ == "__main__":
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # Data and model checkpoints directories
-    parser.add_argument('--data_dir', type=str, default='Realistic_Vision_V5.0_noVAE-512',
-        help='Cartella con le immagini personalizzate di RealVis 5.0')
+    parser.add_argument('--data_dir', type=str, default=r'C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img',
+        help='Cartella con le immagini generate da RealVis già ridimensionate a 112x112')
     parser.add_argument('--save_dir', type=str, default='checkpoints',
         help='Directory to store models and optimizer states')
     parser.add_argument('--save_every', type=int, default=10,
@@ -82,8 +81,8 @@ if __name__ == "__main__":
                             ])
     data_dir = Path(args.data_dir)
     image_folder = data_dir
-    label_csv = Path('csv') / 'list_attr_custom.csv'
-    data_split_csv = Path('csv') / 'list_eval_partition.csv'
+    label_csv = Path(r'C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\labels.csv')
+    data_split_csv = Path(r'C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\partition.csv')
 
     train_dataset = CelebADataset(image_folder=image_folder, labels=label_csv,
         validation_index=data_split_csv, split='train', transform=transform)

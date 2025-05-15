@@ -18,7 +18,7 @@ VAE_ID = "stabilityai/sd-vae-ft-mse-original"
 # Parametri generali
 width = 512
 height = 512
-num_images = 9
+num_images = 1
 num_steps = 25
 guidance = 5.5
 
@@ -29,7 +29,7 @@ negative_prompt = (
 )
 
 # Carica i prompt
-with open("prompt_test2.txt", "r", encoding="utf-8") as f:
+with open(r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\prompt_test2.txt", "r", encoding="utf-8") as f:
     prompts = [line.strip() for line in f if line.strip()]
 
 # Loop sui modelli
@@ -42,7 +42,7 @@ for model_id in MODELS:
     os.makedirs(model_output_dir, exist_ok=True)
 
     # Log file
-    log_file = f"completed_{model_name}.txt"
+    log_file = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\tempimg.list"
     completed = set()
     if os.path.exists(log_file):
         with open(log_file, "r") as f:
@@ -51,7 +51,7 @@ for model_id in MODELS:
     # Carica pipeline con o senza VAE
     if model_id in MODELS_NEED_VAE:
         print("🔧 Caricamento VAE esterno...")
-        vae = AutoencoderKL.from_single_file("models/vae.pt", torch_dtype=torch.float16)
+        vae = AutoencoderKL.from_single_file(r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\models\vae.pt", torch_dtype=torch.float16)
         pipe = StableDiffusionPipeline.from_pretrained(
             model_id,
             vae=vae,

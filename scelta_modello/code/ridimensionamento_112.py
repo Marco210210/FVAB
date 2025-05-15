@@ -1,25 +1,35 @@
 from PIL import Image
 import os
 
-# Percorso della cartella con le immagini originali
-input_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\outputs_finale\Realistic_Vision_V5.0_noVAE"  # Aggiungi r per una stringa raw
-# Percorso della cartella di destinazione per le immagini ridimensionate
-output_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\outputs_finale\Realistic_Vision_V5.0_noVAE_112"  # Usa stringa raw per il percorso
+# === CONFIGURAZIONE ===
+input_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\outputs_finale\Realistic_Vision_V5.0_noVAE"
+output_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img"
+img_list_path = os.path.join(output_dir, "img.list")
+img_dir_relative = "img"
 
-# Crea la cartella di destinazione se non esiste
+# === CREA CARTELLA DI DESTINAZIONE ===
 os.makedirs(output_dir, exist_ok=True)
 
-# Loop attraverso tutte le immagini nella cartella di input
+# === INIZIALIZZA LISTA DEI FILE ===
+new_lines = []
+
+# === LOOP IMMAGINI ===
 for root, dirs, files in os.walk(input_dir):
     for file in files:
-        # Considera solo i file immagine (ad esempio, PNG e JPEG)
-        if file.endswith(".png") or file.endswith(".jpg") or file.endswith(".jpeg"):
-            image_path = os.path.join(root, file)
-            img = Image.open(image_path)
+        if file.lower().endswith((".png", ".jpg", ".jpeg")):
+            input_path = os.path.join(root, file)
+            output_path = os.path.join(output_dir, file)
 
-            # Ridimensiona l'immagine a 112x112
-            img = img.resize((112, 112))  # Modifica questa dimensione se necessario
+            # Ridimensionamento
+            img = Image.open(input_path)
+            img = img.resize((112, 112))
+            img.save(output_path)
 
-            # Salva l'immagine ridimensionata nella cartella di destinazione
-            img.save(os.path.join(output_dir, file))
-            print(f"Immagine ridimensionata salvata in {os.path.join(output_dir, file)}")
+            # Aggiungi il percorso relativo alla lista
+            new_lines.append(os.path.join(img_dir_relative, file) + "\n")
+
+# === SCRITTURA FILE img.list ===
+with open(img_list_path, 'w') as f:
+    f.writelines(new_lines)
+
+print(f"\nImmagini ridimensionate e file 'img.list' creato con {len(new_lines)} righe in: {img_list_path}")
