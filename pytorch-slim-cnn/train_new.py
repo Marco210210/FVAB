@@ -30,7 +30,7 @@ if __name__ == "__main__":
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # Data and model checkpoints directories
-    parser.add_argument('--data_dir', type=str, default=r'C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img',
+    parser.add_argument('--data_dir', type=str, default=r'C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\outputs_finale\Realistic_Vision_V5.0_noVAE',
         help='Cartella con le immagini generate da RealVis già ridimensionate a 112x112')
     parser.add_argument('--save_dir', type=str, default='checkpoints',
         help='Directory to store models and optimizer states')
