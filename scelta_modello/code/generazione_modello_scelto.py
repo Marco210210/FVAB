@@ -40,6 +40,8 @@ for model_id in MODELS:
     # Base path per le immagini generate
     base_output_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\outputs_finale"
 
+#CAMBIARE tempimg.list con tempimgMARCO.list O tempimgMATTIA.list
+
     # Log file
     log_file = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\tempimg.list"
     completed = set()
@@ -65,8 +67,18 @@ for model_id in MODELS:
 
     pipe.to("cuda")
 
+#da 1 a 12 modificare la riga così:
+#start_prompt_index = 1
+#for prompt_index, prompt in enumerate(tqdm(prompts[:12], desc=f"{model_name}"), start=start_prompt_index):
+
+
+#da 13 a 24 modificare la riga così:
+# Generazione immagini
+#start_prompt_index = 13
+#for prompt_index, prompt in enumerate(tqdm(prompts[start_prompt_index - 1:], desc=f"{model_name}"), start=start_prompt_index):
+
     # Generazione immagini
-    for prompt_index, prompt in enumerate(tqdm(prompts, desc=f"{model_name}"), start=1):
+    for prompt_index, prompt in enumerate(tqdm(prompts, desc=f"{model_name}"), start=1): #cambiare questa riga con una delle due a partire da riga 70
         # Crea la cartella per ogni prompt
         prompt_folder = os.path.join(base_output_dir, f"prompt{prompt_index}")
         os.makedirs(prompt_folder, exist_ok=True)
