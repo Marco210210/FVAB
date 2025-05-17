@@ -77,4 +77,11 @@ python train_new.py --batch_size 16 --num_workers 0
 
 ---
 
-✅ Fine del processo manuale. Ricontrollare i file `labels.csv` e `partition.csv` prima dell'addestramento finale.
+
+Cose da chiedere:
+chiedere se va bene generare le immagini a 25 epoche ok
+far vedere le immagini generate devono essere 24 prompt
+va bene questo modello?: models/magface_epoch_00025.pth
+Chiedere il valore da cui considerare un'immagine di qualità buona o meno in magface 20
+Chiedere a quanto impostare la soglia di facer: "row = [img_name] + [1 if p > 0.5 else -1 for p in face1_attrs]"
+chiedere se la batch_size a 16 va bene?: "--batch_size 16" vediamo replicando dal git

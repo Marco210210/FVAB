@@ -29,7 +29,7 @@ negative_prompt = (
 )
 
 # Carica i prompt
-with open(r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\prompt_test2.txt", "r", encoding="utf-8") as f:
+with open(r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\prompt.txt", "r", encoding="utf-8") as f:
     prompts = [line.strip() for line in f if line.strip()]
 
 # Loop sui modelli
@@ -37,10 +37,8 @@ for model_id in MODELS:
     model_name = model_id.split("/")[-1]
     print(f"\n📦 Avvio generazione per: {model_name}")
 
-    # Percorso della cartella output per questo modello
-    model_output_dir = os.path.join(r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\outputs_finale",model_name)
-    os.makedirs(model_output_dir, exist_ok=True)
-
+    # Base path per le immagini generate
+    base_output_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\outputs_finale"
 
     # Log file
     log_file = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\tempimg.list"
@@ -69,9 +67,13 @@ for model_id in MODELS:
 
     # Generazione immagini
     for prompt_index, prompt in enumerate(tqdm(prompts, desc=f"{model_name}"), start=1):
+        # Crea la cartella per ogni prompt
+        prompt_folder = os.path.join(base_output_dir, f"prompt{prompt_index}")
+        os.makedirs(prompt_folder, exist_ok=True)
+
         for image_index in range(1, num_images + 1):
-            filename = f"{prompt_index}_{model_name}_{image_index}.png"
-            save_path = os.path.join(model_output_dir, filename)
+            filename = f"{prompt_index}_{image_index}.png"
+            save_path = os.path.join(prompt_folder, filename)
 
             if filename in completed:
                 continue
