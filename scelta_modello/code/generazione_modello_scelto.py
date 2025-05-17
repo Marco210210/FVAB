@@ -29,7 +29,7 @@ negative_prompt = (
 )
 
 # Carica i prompt
-with open(r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\prompt.txt", "r", encoding="utf-8") as f:
+with open(r"scelta_modello\prompt.txt", "r", encoding="utf-8") as f:
     prompts = [line.strip() for line in f if line.strip()]
 
 # Loop sui modelli
@@ -38,12 +38,12 @@ for model_id in MODELS:
     print(f"\n📦 Avvio generazione per: {model_name}")
 
     # Base path per le immagini generate
-    base_output_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\outputs_finale"
+    base_output_dir = r"scelta_modello\outputs_finale"
 
 #CAMBIARE tempimg.list con tempimgMARCO.list O tempimgMATTIA.list
 
     # Log file
-    log_file = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\tempimg.list"
+    log_file = r"magface\inference\img\tempimg.list"
     completed = set()
     if os.path.exists(log_file):
         with open(log_file, "r") as f:
@@ -52,7 +52,7 @@ for model_id in MODELS:
     # Carica pipeline con o senza VAE
     if model_id in MODELS_NEED_VAE:
         print("🔧 Caricamento VAE esterno...")
-        vae = AutoencoderKL.from_single_file(r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\models\vae.pt", torch_dtype=torch.float16)
+        vae = AutoencoderKL.from_single_file(r"scelta_modello\models\vae.pt", torch_dtype=torch.float16)
         pipe = StableDiffusionPipeline.from_pretrained(
             model_id,
             vae=vae,

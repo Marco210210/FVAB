@@ -30,7 +30,7 @@ if __name__ == "__main__":
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # Data and model checkpoints directories
-    parser.add_argument('--data_dir', type=str, default=r'C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\outputs_finale\Realistic_Vision_V5.0_noVAE',
+    parser.add_argument('--data_dir', type=str, default=r'scelta_modello\outputs_finale\Realistic_Vision_V5.0_noVAE',
         help='Cartella con le immagini generate da RealVis già ridimensionate a 112x112')
     parser.add_argument('--save_dir', type=str, default='checkpoints',
         help='Directory to store models and optimizer states')
@@ -81,8 +81,8 @@ if __name__ == "__main__":
                             ])
     data_dir = Path(args.data_dir)
     image_folder = data_dir
-    label_csv = Path(r'C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\labels.csv')
-    data_split_csv = Path(r'C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\partition.csv')
+    label_csv = Path(r'magface\inference\img\labels.csv')
+    data_split_csv = Path(r'magface\inference\img\partition.csv')
 
     train_dataset = CelebADataset(image_folder=image_folder, labels=label_csv,
         validation_index=data_split_csv, split='train', transform=transform)

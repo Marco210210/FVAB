@@ -14,7 +14,7 @@ class SlimNet(nn.Module):
   def __init__(self, filter_count_values=[16,32,48,64], initial_conv=[96,7,2], num_classes=40, depth_multiplier=1):
     super().__init__()
     
-    #Store architecture hyper_params for model persistence / loading
+    # Store architecture hyper_params for model persistence / loading
     self.hyper_params = zip_params(filter_count_values, initial_conv, num_classes, depth_multiplier)
 
     self.conv1 = conv_2d(3, initial_conv[0], initial_conv[1], stride=initial_conv[2])

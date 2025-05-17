@@ -2,10 +2,10 @@ import os
 import csv
 
 # Percorso del file .list
-input_list_path = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\img.list"
+input_list_path = r"magface\inference\img\img.list"
 
 # Percorso di output per il CSV finale
-output_csv_path = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img\partition.csv"
+output_csv_path = r"magface\inference\img\partition.csv"
 
 # Leggi tutti i nomi immagine e rimuovi il prefisso "img\"
 with open(input_list_path, 'r', encoding='utf-8') as f:

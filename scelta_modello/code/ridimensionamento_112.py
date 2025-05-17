@@ -2,8 +2,8 @@ from PIL import Image
 import os
 
 # === CONFIGURAZIONE ===
-input_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\scelta_modello\outputs_finale\Realistic_Vision_V5.0_noVAE"
-output_dir = r"C:\Users\marco\Desktop\Marco\Universita\Magistrale\FVAB\prog\magface\inference\img"
+input_dir = r"scelta_modello\outputs_finale\Realistic_Vision_V5.0_noVAE"
+output_dir = r"magface\inference\img"
 temp_list_path = os.path.join(output_dir, "tempimg.list")
 img_list_path = os.path.join(output_dir, "img.list")
 img_dir_relative = "img"
